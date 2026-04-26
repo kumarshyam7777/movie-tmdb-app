@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Star, Play, Download, TrendingUp, Clock, Award } from 'lucide-react';
+import { Star, Play, Download, TrendingUp, Clock, Award, Youtube } from 'lucide-react';
 import { fetchTrending, fetchTopRated, fetchNowPlaying, getBackdropUrl, getPosterUrl } from '@/lib/tmdb';
 import { formatRating, formatYear, getRatingBg, truncate } from '@/lib/utils';
 import { BOLLYWOOD_GENRES } from '@/lib/constants';
+import { FREE_YOUTUBE_MOVIES } from '@/lib/free-movies';
 import { MovieGrid } from '@/components/movie/MovieGrid';
+import { FreeMoviesGrid } from '@/components/movie/FreeMoviesGrid';
 import { HeroDownloadButton } from './HeroDownloadButton';
 
 export default async function HomePage() {
@@ -101,6 +103,25 @@ export default async function HomePage() {
               </Link>
             ))}
           </div>
+        </section>
+
+        {/* ── Watch Free on YouTube ────────────────────────────────── */}
+        <section>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-red-600/20 border border-red-500/30">
+                <Youtube size={18} className="text-red-400" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-white font-display">Watch Free on YouTube</h2>
+                <p className="text-white/40 text-xs mt-0.5">Full movies streaming free</p>
+              </div>
+            </div>
+            <Link href="/free-movies" className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">
+              View all →
+            </Link>
+          </div>
+          <FreeMoviesGrid movies={FREE_YOUTUBE_MOVIES.slice(0, 5)} />
         </section>
 
         {/* ── Now Playing ───────────────────────────────────────────── */}

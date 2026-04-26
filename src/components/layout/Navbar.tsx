@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
-import { Search, Bookmark, Film, TrendingUp, Menu, X, Clapperboard, Star, Loader2 } from 'lucide-react';
+import { Search, Bookmark, Film, TrendingUp, Menu, X, Clapperboard, Star, Loader2, Youtube } from 'lucide-react';
 import { useWatchlist } from '@/hooks/useWatchlist';
 import { searchMovies } from '@/lib/tmdb';
 import { getPosterUrl } from '@/lib/tmdb';
@@ -11,9 +11,10 @@ import { formatYear, formatRating, getRatingBg } from '@/lib/utils';
 import type { Movie } from '@/types/movie.types';
 
 const NAV_LINKS = [
-  { href: '/',          label: 'Home',     icon: Film },
-  { href: '/trending',  label: 'Trending', icon: TrendingUp },
-  { href: '/watchlist', label: 'Watchlist', icon: Bookmark },
+  { href: '/',            label: 'Home',        icon: Film },
+  { href: '/trending',    label: 'Trending',    icon: TrendingUp },
+  { href: '/free-movies', label: 'Free Movies', icon: Youtube },
+  { href: '/watchlist',   label: 'Watchlist',   icon: Bookmark },
 ];
 
 export function Navbar() {
